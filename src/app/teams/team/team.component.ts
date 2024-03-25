@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/assets/services/common.service';
 
 @Component({
   selector: 'app-team',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commonService: CommonService) { }
 
   ngOnInit(): void {
+    this.commonService.add(3, 4);
+    console.log('team component : ', this.commonService.result);
+    this.getPosts();
+  }
+
+  public getPosts() {
+    this.commonService.getAllPosts().subscribe((res: any) => {
+      console.log(res);
+    })
   }
 
 }

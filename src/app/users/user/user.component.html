@@ -1,0 +1,8 @@
+<div *ngIf="user">
+    <h5>{{user.id}}. {{user.name}} | {{user.username}}</h5>
+    <h6>{{user.email}} | {{user.phone}}</h6>
+    <a [href]="user.website" target="_blank">{{user.website}}</a>
+    <button *ngIf="showPostsBtn" type="button" class="btn btn-primary mt-2 w-100" (click)="viewPosts(user.id)">View
+        Posts
+    </button>
+</div>
