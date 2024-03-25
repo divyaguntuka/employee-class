@@ -1,0 +1,17 @@
+<div>
+    <h1>All users</h1>
+    <div class="card mb-2 p-2" *ngFor="let p of profiles">
+        <h3>{{p.name}}</h3>
+        <p>{{p.dob | date : 'dd/MM/YYYY'}}</p>
+        <p>{{p.bio}}</p>
+    </div>
+</div>
+<br>
+<div *ngIf="selectedProfile">
+    <h1>Selected user</h1>
+    <div class="card p-2">
+        <h3>{{selectedProfile.name}}</h3>
+        <p>{{selectedProfile.dob | date : 'dd/MM/YYYY'}}</p>
+        <p>{{selectedProfile.bio}}</p>
+    </div>
+</div>
