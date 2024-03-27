@@ -5,10 +5,12 @@ export class User {
     email!: string;
     phone!: string;
     website!: string;
-    address!: Address;
+address: any;
+ 
+
 }
 
-export class Address {
+export class Address { 
     street!: string;
     suite!: string;
     city!: string;

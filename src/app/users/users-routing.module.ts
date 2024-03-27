@@ -4,6 +4,7 @@ import { UsersComponent } from './users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SkillsComponent } from './skills/skills.component';
 import { PostsComponent } from './posts/posts.component';
+import { AddressComponent } from './address/address.component';
 
 const routes: Routes = [
   { path: '', component: UsersComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'skills', component: SkillsComponent },
   { path: 'posts', component: PostsComponent },
   { path: ':userId/posts', component: PostsComponent },
+  { path: 'address', component:AddressComponent}
 ];
 
 @NgModule({

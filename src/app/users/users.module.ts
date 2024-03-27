@@ -7,6 +7,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { SkillsComponent } from './skills/skills.component';
 import { UserComponent } from './user/user.component';
 import { PostsComponent } from './posts/posts.component';
+import { AddressComponent } from './address/address.component';
+
+
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { PostsComponent } from './posts/posts.component';
     SkillsComponent,
     UserComponent,
     PostsComponent,
+    AddressComponent,
+   
+  
   ],
   imports: [
     CommonModule,

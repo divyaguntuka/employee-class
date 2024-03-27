@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/assets/classes/User';
+import { Address, User } from 'src/assets/classes/User';
 import { ROUTES } from 'src/assets/enums/routes';
 
 @Component({
@@ -12,6 +12,7 @@ export class UserComponent implements OnInit {
 
   @Input() public user!: User;
   @Input() public showPostsBtn = true;
+  @Input() public address= Address;
 
   constructor(private router: Router) { }
 
