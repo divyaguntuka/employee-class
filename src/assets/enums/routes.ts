@@ -3,4 +3,5 @@ export enum ROUTES {
     PROFILE = 'users/profile',
     SKILLS = 'users/skills',
     POSTS = '/posts',
+    ADDRESS = '/users/address'
 }

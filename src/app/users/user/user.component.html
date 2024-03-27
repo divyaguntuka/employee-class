@@ -1,8 +1,16 @@
 <div *ngIf="user">
     <h5>{{user.id}}. {{user.name}} | {{user.username}}</h5>
-    <h6>{{user.email}} | {{user.phone}}</h6>
-    <a [href]="user.website" target="_blank">{{user.website}}</a>
-    <button *ngIf="showPostsBtn" type="button" class="btn btn-primary mt-2 w-100" (click)="viewPosts(user.id)">View
+    <h6>Email: {{user.email}} </h6>
+    <h6>Phone: {{user.phone}}</h6>
+    <h6 class="d-flex"> <span>Address : </span>
+        <span> {{user.address.street}}, 
+               {{user.address.suite}}, 
+               {{user.address.city}}, 
+               {{user.address.zipcode}} </span>
+    
+    </h6>
+    <a [href]="user.website" target="_blank"><span style="color:#000;">Website:</span> {{user.website}}</a><br>
+    <button *ngIf="showPostsBtn" type="button" class="btn btn-primary mt-2 w-20 m-auto d-flex" (click)="viewPosts(user.id)">View
         Posts
     </button>
 </div>
