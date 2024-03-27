@@ -1,18 +1,18 @@
-<div class="container">
+<div *ngIf="users.length != 0" class="container">
     <div class="row ">
-       
 
-            <h1 class="col-12">Users</h1>
 
-            <div class="col-6" *ngFor="let user of users">
-                <div class="card ">
+        <h1 class="col-12" class="text-center">Users</h1>
+
+        <div class="col-6" *ngFor="let user of users">
+            <div class="card ">
                 <!-- <h5>{{user.id}}. {{user.name}} | {{user.username}}</h5>
         <h6>{{user.email}} | {{user.phone}}</h6>
         <a [href]="user.website" target="_blank">{{user.website}}</a>
         <button type="button" class="btn btn-primary">View Posts</button> -->
                 <app-user [user]="user"></app-user>
             </div>
-            </div>
+        </div>
 
     </div>
 </div>

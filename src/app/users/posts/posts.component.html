@@ -1,16 +1,15 @@
 <div class="my-3">
-    <div class="card" *ngIf="user">
-        <h1>User</h1>
-        <hr>
-        <app-user [user]="user" [showPostsBtn]="false"></app-user>
+    <div *ngIf="user">
+        <h1 class="text-center">User</h1>
+        <div class="card">
+            <app-user [user]="user" [showPostsBtn]="false"></app-user>
+        </div>
     </div>
-
-    <div>
-        <h1>Posts</h1>
+    <div *ngIf="posts.length != 0">
+        <h1 class="text-center">Posts</h1>
         <div class="card p-2 mb-2" *ngFor="let p of posts">
-            <h5>{{p.id}}</h5>
             <h6>{{p.title}}</h6>
-            <p>{{p.body}}</p>
+            <pre>{{p.body}}</pre>
         </div>
     </div>
 </div>
