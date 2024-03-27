@@ -11,27 +11,11 @@ import { UserService } from '../users.service';
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements OnInit {
-  
-  // @Input() public address!: Address;
-  // public userId: number = 1;
-  // @Input() public add: Address[] = [];
 
-  constructor(private router: Router, private userService: UserService) {  }
+  @Input() public address!: Address;
 
-  ngOnInit(): void {
-    // this.getUser();
-    
-  }
-  // public getUsers() {
-  //   this.userService.getAllUsers().subscribe((res: Address[]) => {
-  //     console.log()
-  //     this.add = res;
-  //   });
-  // }
-  // public getUser() {
-  //   this.userService.getUser(this.userId).subscribe((res: Address[]) => {
-  //     this.address= res[0];
-  //   })
-  // }
-  
+  constructor() { }
+
+  ngOnInit(): void { }
 }
+

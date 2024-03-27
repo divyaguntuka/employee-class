@@ -14,7 +14,7 @@ export class UserService {
     public getAllUsers(): Observable<any> {
         return this.http.get(this.BASE_URL + 'users');
     }
-    
+
 
     public getUser(id: number): Observable<any> {
         return this.http.get(this.BASE_URL + `users?id=${id}`);
@@ -22,6 +22,10 @@ export class UserService {
 
     public getAllPosts(userId?: number): Observable<any> {
         return this.http.get(this.BASE_URL + 'posts' + (userId ? `?userId=${userId}` : ''));
+    }
+
+    public getPostsComments(postId: number): Observable<any> {
+        return this.http.get(this.BASE_URL + `comments?postId=${postId}`);
     }
 
 }

@@ -14,6 +14,7 @@ export class PostsComponent implements OnInit {
   public user!: User;
   public userId: number = 1;
   public posts: Posts[] = [];
+  public showCommetsSeperately = true;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.route.params.subscribe((path: any) => {
@@ -36,9 +37,19 @@ export class PostsComponent implements OnInit {
 
   public getPosts() {
     this.userService.getAllPosts(this.userId).subscribe((res: Posts[]) => {
-      console.log(res);
       this.posts = res;
+      if (!this.showCommetsSeperately) {
+        this.posts.forEach(p => {
+          this.getPostComments(p.id, p);
+        });
+      }
     })
+  }
+
+  public getPostComments(postId: number, post: Posts) {
+    this.userService.getPostsComments(postId).subscribe((res: any) => {
+      post.comments = res;
+    });
   }
 
 }

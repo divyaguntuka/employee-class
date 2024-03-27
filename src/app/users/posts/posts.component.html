@@ -7,9 +7,28 @@
     </div>
     <div *ngIf="posts.length != 0">
         <h1 class="text-center">Posts</h1>
-        <div class="card p-2 mb-2" *ngFor="let p of posts">
-            <h6>{{p.title}}</h6>
-            <pre>{{p.body}}</pre>
+        <div class="card p-2 mb-2" *ngFor="let post of posts">
+
+            <h6>{{post.title}}</h6>
+            <pre>{{post.body}}</pre>
+            <button *ngIf="showCommetsSeperately" type="button" class="btn btn-primary mt-2 w-20 m-auto d-flex">View
+                Comments
+            </button>
+
+            <div *ngIf="post?.comments">
+                <h1 class="text-center">Comments</h1>
+                <div class="row">
+                    <div class="col-6" *ngFor="let comment of post.comments">
+                        <div class="card">
+                            <h6>{{comment.name}} | {{comment.email}}</h6>
+                            <pre>{{comment.body}}</pre>
+
+                            <!-- Load comments components here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
