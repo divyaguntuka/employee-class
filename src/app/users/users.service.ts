@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Posts } from 'src/assets/classes/posts';
 
 @Injectable(
     { providedIn: 'root' }
@@ -26,6 +27,18 @@ export class UserService {
 
     public getPostsComments(postId: number): Observable<any> {
         return this.http.get(this.BASE_URL + `comments?postId=${postId}`);
+    }
+
+    public savePost(post: Posts): Observable<any> {
+        return this.http.post(this.BASE_URL + 'posts', post);
+    }
+
+    public updatePost(postId: number, post: Posts): Observable<any> {
+        return this.http.put(this.BASE_URL + `posts/${postId}`, post);
+    }
+
+    public deletePost(postId: number): Observable<any> {
+        return this.http.delete(this.BASE_URL + `posts/${postId}`);
     }
 
 }

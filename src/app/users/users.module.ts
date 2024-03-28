@@ -9,8 +9,9 @@ import { UserComponent } from './user/user.component';
 import { PostsComponent } from './posts/posts.component';
 import { AddressComponent } from './address/address.component';
 import { CommentComponent } from './comment/comment.component';
-
 import { CommentsComponent } from './comments/comments.component';
+import { AddEditPostComponent } from './add-edit-post/add-edit-post.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,15 +25,13 @@ import { CommentsComponent } from './comments/comments.component';
     PostsComponent,
     AddressComponent,
     CommentComponent,
-   
     CommentsComponent,
-   
-   
-  
+    AddEditPostComponent,
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    FormsModule
   ]
 })
 export class UsersModule { }

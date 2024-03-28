@@ -6,13 +6,28 @@
         </div>
     </div>
     <div *ngIf="posts.length != 0">
-        <h1 class="text-center">Posts</h1>
+        <div class="d-items-b">
+            <h1>Posts</h1>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEditPost">
+                Add post
+            </button>
+        </div>
         <div class="card p-2 mb-2" *ngFor="let post of posts">
 
             <h6>{{post.title}}</h6>
             <pre>{{post.body}}</pre>
-            <button *ngIf="showCommetsSeperately" type="button" class="btn btn-primary mt-2 w-20 m-auto d-flex"
-                (click)="viewComments(post.id)">ViewComments</button>
+            <div class="d-items-b">
+                <button type="button" class="btn btn-primary" (click)="edit(post)">
+                    Edit Post
+                </button>
+                <button *ngIf="showCommetsSeperately" type="button" class="btn btn-primary"
+                    (click)="viewComments(post.id)">
+                    ViewComments
+                </button>
+                <button type="button" class="btn btn-danger" (click)="delete(post)">
+                    Delete Post
+                </button>
+            </div>
 
             <div *ngIf="post?.comments">
                 <h1 class="text-center">Comments</h1>
@@ -29,6 +44,24 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="addEditPost" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{selectedPost?.id ? 'Edit' : 'Add'}} Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-add-edit-post [post]="selectedPost" (postEmitter)="saveOrEditPost($event)"
+                    (closeEmitter)="close()"></app-add-edit-post>
+            </div>
         </div>
     </div>
 </div>
