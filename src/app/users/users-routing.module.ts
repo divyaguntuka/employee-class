@@ -5,6 +5,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { SkillsComponent } from './skills/skills.component';
 import { PostsComponent } from './posts/posts.component';
 import { AddressComponent } from './address/address.component';
+import { CommentComponent } from './comment/comment.component';
+import { CommentsComponent } from './comments/comments.component';
 
 const routes: Routes = [
   { path: '', component: UsersComponent },
@@ -14,7 +16,8 @@ const routes: Routes = [
   { path: 'skills', component: SkillsComponent },
   { path: 'posts', component: PostsComponent },
   { path: ':userId/posts', component: PostsComponent },
-  { path: 'address', component:AddressComponent}
+  { path: 'address', component:AddressComponent},
+  { path: ':userId/posts/:postId/comments', component:CommentsComponent}
 ];
 
 @NgModule({

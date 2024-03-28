@@ -8,6 +8,10 @@ import { SkillsComponent } from './skills/skills.component';
 import { UserComponent } from './user/user.component';
 import { PostsComponent } from './posts/posts.component';
 import { AddressComponent } from './address/address.component';
+import { CommentComponent } from './comment/comment.component';
+
+import { CommentsComponent } from './comments/comments.component';
+
 
 
 
@@ -19,6 +23,10 @@ import { AddressComponent } from './address/address.component';
     UserComponent,
     PostsComponent,
     AddressComponent,
+    CommentComponent,
+   
+    CommentsComponent,
+   
    
   
   ],

@@ -1,3 +1,5 @@
+<p>Total comments works!</p>
+
 <div class="my-3">
     <div *ngIf="user">
         <h1 class="text-center">User</h1>
@@ -11,9 +13,7 @@
 
             <h6>{{post.title}}</h6>
             <pre>{{post.body}}</pre>
-            <button *ngIf="showCommetsSeperately" type="button" class="btn btn-primary mt-2 w-20 m-auto d-flex"
-                (click)="viewComments(post.id)">ViewComments</button>
-
+     
             <div *ngIf="post?.comments">
                 <h1 class="text-center">Comments</h1>
                 <div class="row">
