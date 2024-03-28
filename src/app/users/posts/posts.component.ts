@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Posts } from 'src/assets/classes/posts';
 import { UserService } from '../users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { User } from 'src/assets/classes/User';
+import { ROUTES } from 'src/assets/enums/routes';
+
 
 @Component({
   selector: 'app-posts',
@@ -14,12 +16,23 @@ export class PostsComponent implements OnInit {
   public user!: User;
   public userId: number = 1;
   public posts: Posts[] = [];
-  public showCommetsSeperately = true;
+  public postId : number = 1;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {
+  public showCommetsSeperately = true;
+  
+
+
+
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {
     this.route.params.subscribe((path: any) => {
       if (path?.userId) {
         this.userId = path.userId;
+      }
+    })
+    this.route.params.subscribe((path:any) =>{
+      if (path?.postId){
+        this.postId = path.postId;
+        
       }
     })
   }
@@ -27,6 +40,7 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getPosts();
+    
   }
 
   public getUser() {
@@ -51,5 +65,10 @@ export class PostsComponent implements OnInit {
       post.comments = res;
     });
   }
+
+
+  public viewComments(id: number) {
+   this.router.navigateByUrl(ROUTES.USERS + '/' + this.userId + ROUTES.POSTS + '/' + this.postId + ROUTES.COMMENTS)
+   }
 
 }
