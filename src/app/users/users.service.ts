@@ -9,27 +9,39 @@ import { User } from 'src/assets/classes/User';
 )
 
 export class UserService {
-    deleteUser(id: number) {
-      throw new Error('Method not implemented.');
-    }
-    // saveUser(user: User) {
-    //   throw new Error('Method not implemented.');
-    // }
     constructor(private http: HttpClient) { }
 
     private BASE_URL = 'https://jsonplaceholder.typicode.com/';
 
+
+    // user
     public getAllUsers(): Observable<any> {
         return this.http.get(this.BASE_URL + 'users');
     }
-
 
     public getUser(id: number): Observable<any> {
         return this.http.get(this.BASE_URL + `users?id=${id}`);
     }
 
+    public saveUser(user: User): Observable<any> {
+        return this.http.post(this.BASE_URL + 'user', user);
+    }
+
+    public updateUser(userId: number, user: User): Observable<any> {
+        return this.http.put(this.BASE_URL + `user/${userId}`, user);
+    }
+
+    deleteUser(userId: number) {
+        return this.http.delete(this.BASE_URL + `user/${userId}`);
+    }
+
+    // posts
     public getAllPosts(userId?: number): Observable<any> {
         return this.http.get(this.BASE_URL + 'posts' + (userId ? `?userId=${userId}` : ''));
+    }
+
+    public getPost(postId?: number): Observable<any> {
+        return this.http.get(this.BASE_URL + `posts/${postId}`);
     }
 
     public getPostsComments(postId: number): Observable<any> {
@@ -47,17 +59,5 @@ export class UserService {
     public deletePost(postId: number): Observable<any> {
         return this.http.delete(this.BASE_URL + `posts/${postId}`);
     }
-
-
-    //user
-
-    public saveUser(user: User): Observable<any> {
-        return this.http.post(this.BASE_URL + 'user', user);
-    }
-    public updateUser(userId: number, user: User): Observable<any> {
-        return this.http.put(this.BASE_URL + `user/${userId}`, user);
-    }
-
-
 
 }

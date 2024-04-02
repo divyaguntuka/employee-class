@@ -2,24 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/assets/classes/User';
 import { UserService } from './users.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-edit(_t10: User) {
-throw new Error('Method not implemented.');
-}
 
   public users: User[] = [];
-  selectedUser: any;
+  public selectedUser: User = new User();
 
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     this.getUsers();
-    this.close();
   }
 
   public getUsers() {
@@ -28,7 +26,7 @@ throw new Error('Method not implemented.');
     });
   }
 
-    public saveOrEditUser(user: User) {
+  public saveOrEditUser(user: User) {
     if (this.selectedUser.id) {
       this.userService.updateUser(this.selectedUser.id, user).subscribe((res: any) => {
         console.log('updated post : ', res);
@@ -41,10 +39,20 @@ throw new Error('Method not implemented.');
       })
     }
   }
-  close() {
-    throw new Error('Method not implemented.');
+
+  public edit(user: User) {
+    this.selectedUser = user;
+    $('#addEditUser').modal('show');
   }
 
+  public close() {
+    $('#addEditUser').modal('hide');
+    this.selectedUser = new User();
+  }
 
-
+  public delete(user: User) {
+    this.userService.deleteUser(user.id).subscribe((res: any) => {
+      console.log('deleted : ', res);
+    })
+  }
 }

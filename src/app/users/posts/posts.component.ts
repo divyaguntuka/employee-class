@@ -44,7 +44,7 @@ export class PostsComponent implements OnInit {
   public getUser() {
     this.userService.getUser(this.userId).subscribe((res: User[]) => {
       this.user = res[0];
-    }) 
+    })
   }
 
   public getPosts() {
@@ -66,7 +66,7 @@ export class PostsComponent implements OnInit {
 
 
   public viewComments(id: number) {
-    this.router.navigateByUrl(ROUTES.USERS + '/' + this.userId + ROUTES.POSTS + '/' + this.postId + ROUTES.COMMENTS)
+    this.router.navigateByUrl(ROUTES.USERS + '/' + this.userId + ROUTES.POSTS + '/' + id + ROUTES.COMMENTS)
   }
 
   public saveOrEditPost(post: Posts) {

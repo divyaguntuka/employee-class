@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Address, User } from 'src/assets/classes/User';
 import { ROUTES } from 'src/assets/enums/routes';
@@ -11,14 +11,12 @@ declare var $: any;
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-delete(arg0: User) {
-throw new Error('Method not implemented.');
-}
 
   @Input() public user!: User;
   @Input() public showPostsBtn = true;
-  @Input() public address= Address;
-  selectedUser: User = new User();
+  @Input() public address = Address;
+  @Output() public editEmit = new EventEmitter<any>();
+  @Output() public deleteEmit = new EventEmitter<any>();
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -31,20 +29,11 @@ throw new Error('Method not implemented.');
   }
 
   public edit(user: User) {
-    $('#addEditUser').modal('show');
-    this.selectedUser = user;
+    this.editEmit.emit(user);
   }
 
-  // public delete(user: User) {
-  //   this.userService.deleteUser(user.id).subscribe((res: any) => {
-  //     console.log('deleted : ', res);
-  //   })
-  // }
-
-  public close() {
-    $('#addEditUser').modal('hide');
-    this.selectedUser = new User();
+  delete(user: User) {
+    this.deleteEmit.emit(user);
   }
-
 
 }

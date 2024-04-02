@@ -1,8 +1,9 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { Posts } from 'src/assets/classes/posts';
+import { Comments, Posts } from 'src/assets/classes/posts';
 import { User } from 'src/assets/classes/User';
 import { UserService } from '../users.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,46 +13,46 @@ import { UserService } from '../users.service';
 })
 export class CommentsComponent implements OnInit {
 
-  @Input() public user!: User;
-  @Input() public userId: number = 1;
-  @Input() public posts: Posts[] = [];
-  @Input() public postId: number = 1;
-  @Input() public showCommetsSeperately = false;
+  public user!: User;
+  public userId: number = 1;
+  public post!: Posts;
+  public postId: number = 1;
+  public comments: Comments[] = [];
 
-
-
- 
-
-  constructor( private userService: UserService) { 
-   
+  constructor(private route: ActivatedRoute, private userService: UserService) {
+    this.route.params.subscribe((path: any) => {
+      if (path?.userId) {
+        this.userId = path.userId;
+      }
+    })
+    this.route.params.subscribe((path: any) => {
+      if (path?.postId) {
+        this.postId = path.postId;
+      }
+    })
   }
 
 
   ngOnInit(): void {
     this.getUser();
-    this.getPosts() 
-    
+    this.getPost()
+
   }
   public getUser() {
     this.userService.getUser(this.userId).subscribe((res: User[]) => {
       this.user = res[0];
     })
   }
-  public getPosts() {
-    this.userService.getAllPosts(this.userId).subscribe((res: Posts[]) => {
-      this.posts = res;
-      if (!this.showCommetsSeperately) {
-        this.posts.forEach(p => {
-          this.getPostComments(p.id, p);
-        });
-      }
-     
+  public getPost() {
+    this.userService.getPost(this.postId).subscribe((res: Posts) => {
+      this.post = res;
+      this.getPostComments(this.postId);
     })
   }
 
-  public getPostComments(postId: number, post: Posts) {
+  public getPostComments(postId: number) {
     this.userService.getPostsComments(postId).subscribe((res: any) => {
-      post.comments = res;
+      this.comments = res;
     });
   }
 

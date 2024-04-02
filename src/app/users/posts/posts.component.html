@@ -5,7 +5,7 @@
             <app-user [user]="user" [showPostsBtn]="false"></app-user>
         </div>
     </div>
-    <div *ngIf="posts.length != 0"> 
+    <div *ngIf="posts.length != 0">
         <div class="d-items-b">
             <h1>Posts</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEditPost">
@@ -18,7 +18,7 @@
             <pre>{{post.body}}</pre> -->
 
             <app-post [post]="post"></app-post>
-            
+
             <div class="d-items-b">
                 <button type="button" class="btn btn-primary" (click)="edit(post)">
                     Edit Post
@@ -37,13 +37,9 @@
             <div *ngIf="post?.comments">
                 <h1 class="text-center">Comments</h1>
                 <div class="row">
-                    <div class="col-6" *ngFor="let c of post.comments">
+                    <div class="col-6" *ngFor="let comment of post.comments">
                         <div class="card">
-                            <!-- <h6>{{comment.name}} | {{comment.email}}</h6>
-                            <pre>{{comment.body}}</pre> -->
-
-                            <!-- Load comments components here -->
-                            <app-comment [comment]="c"></app-comment>
+                            <app-comment [comment]="comment"></app-comment>
                         </div>
                     </div>
                 </div>
@@ -58,14 +54,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{selectedPost?.id ? 'Edit' : 'Add'}} Post</h5>
+                <h5 class="modal-title">{{selectedPost.id ? 'Edit' : 'Add'}} Post</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <app-add-edit-post [post]="selectedPost" (postEmitter)="saveOrEditPost($event)"
-                    (closeEmitter)="close()"></app-add-edit-post>
+                    (closeEmitter)="close()">
+                </app-add-edit-post>
             </div>
         </div>
     </div>
