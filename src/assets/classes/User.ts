@@ -6,6 +6,7 @@ export class User {
     phone!: string;
     website!: string;
     address!: Address;
+    bg!: string;
 }
 
 export class Address {

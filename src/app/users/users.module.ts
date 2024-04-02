@@ -14,9 +14,8 @@ import { AddEditPostComponent } from './add-edit-post/add-edit-post.component';
 import { FormsModule } from '@angular/forms';
 import { PostComponent } from './post/post.component';
 import { AddEditUserComponent } from './add-edit-user/add-edit-user.component';
-
-
-
+import { SearchPipe } from 'src/assets/pipes/search.pipe';
+import { ColorPipe } from 'src/assets/pipes/color.pipe';
 
 @NgModule({
   declarations: [
@@ -31,11 +30,13 @@ import { AddEditUserComponent } from './add-edit-user/add-edit-user.component';
     AddEditPostComponent,
     PostComponent,
     AddEditUserComponent,
+    SearchPipe,
+    ColorPipe
   ],
   imports: [
     CommonModule,
     UsersRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class UsersModule { }

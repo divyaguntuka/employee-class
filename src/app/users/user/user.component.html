@@ -1,5 +1,5 @@
 <div *ngIf="user">
-    <h5>{{user.name}} | {{user.username}}</h5>
+    <h5>{{user.name}} | {{user.username | uppercase}}</h5>
     <h6>Email: {{user.email}} </h6>
     <h6>Phone: {{user.phone}}</h6>
     <!-- <p class="d-flex mb-0">

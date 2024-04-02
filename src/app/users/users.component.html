@@ -1,14 +1,21 @@
+<h1>{{date | date : 'dd-MMM-yyyy hh:mm:ss a'}}</h1>
+<h1>{{ '100' | currency}}</h1>
+
 <div *ngIf="users.length != 0" class="container">
     <h1 class="text-center">Users</h1>
     <div class="flex-end">
+        <div class="form-floating mr-3">
+            <input type="text" class="form-control" id="searchUser" name="nasearchUserme" placeholder="Search User"
+                [(ngModel)]="searchText">
+        </div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEditUser">
             Add User
         </button>
     </div>
 
     <div class="row ">
-        <div class="col-6" *ngFor="let user of users">
-            <div class="card ">
+        <div class="col-6" *ngFor="let user of users | search : 'username' : searchText ">
+            <div class="card" [ngStyle]="{'backgroundColor': (user.bg | color)} ">
                 <!-- <h5>{{user.name}} | {{user.username}}</h5>
                 <h6>{{user.email}} | {{user.phone}}</h6>
                 <p class="d-flex mb-0">

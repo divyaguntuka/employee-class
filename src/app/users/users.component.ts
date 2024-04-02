@@ -13,11 +13,16 @@ export class UsersComponent implements OnInit {
 
   public users: User[] = [];
   public selectedUser: User = new User();
+  public date = new Date();
+  public searchText!: string;
 
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     this.getUsers();
+    setInterval(() => {
+      this.date = new Date();
+    })
   }
 
   public getUsers() {
