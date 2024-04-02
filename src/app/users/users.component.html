@@ -1,5 +1,14 @@
+
+
+
 <div *ngIf="users.length != 0" class="container">
     <h1 class="text-center">Users</h1>
+    <div class="flex-end">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#addEditUser">
+            Add User
+        </button>
+    </div>
+    
     <div class="row ">
         <div class="col-6" *ngFor="let user of users">
             <div class="card ">
@@ -8,7 +17,7 @@
                 <p class="d-flex mb-0">
                     <span>Address : </span>
                     <span>
-                        {{user.address.street}},
+                        {{user.address.street}}, 
                         {{user.address.suite}},
                         {{user.address.city}},
                         {{user.address.zipcode}}
@@ -17,6 +26,7 @@
                 <a [href]="user.website" target="_blank">{{user.website}}</a>
                 <button type="button" class="btn btn-primary">View Posts</button> -->
                 <app-user [user]="user"></app-user>
+                 <app-user (emit)="edit(user)"></app-user>
             </div>
         </div>
 
@@ -24,3 +34,21 @@
 </div>
 
 <!-- add edit user modal -->
+
+
+<div class="modal" id="addEditUser" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{selectedUser?.id ? 'Edit' : 'Add'}} User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-add-edit-user [user]="selectedUser"  (userEmitter)="saveOrEditUser($event)"
+                    (closeEmitter)="close()"></app-add-edit-user>
+            </div>
+        </div>
+    </div>
+</div>

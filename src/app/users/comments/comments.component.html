@@ -1,5 +1,4 @@
 <p>Total comments works!</p>
-
 <div class="my-3">
     <div *ngIf="user">
         <h1 class="text-center">User</h1>
@@ -7,22 +6,21 @@
             <app-user [user]="user" [showPostsBtn]="false"></app-user>
         </div>
     </div>
-    <div *ngIf="posts.length != 0">
-        <h1 class="text-center">Posts</h1>
-        <div class="card p-2 mb-2" *ngFor="let post of posts">
 
-            <h6>{{post.title}}</h6>
-            <pre>{{post.body}}</pre>
-     
+
+    <div *ngIf = "posts">
+        <div class="card p-2 mb-2" *ngFor="let post of posts">
+            <h2 class="text-center">Post</h2>
+            <app-post [post]="post"></app-post>
+
+         
+
             <div *ngIf="post?.comments">
                 <h1 class="text-center">Comments</h1>
                 <div class="row">
                     <div class="col-6" *ngFor="let c of post.comments">
                         <div class="card">
-                            <!-- <h6>{{comment.name}} | {{comment.email}}</h6>
-                            <pre>{{comment.body}}</pre> -->
-
-                            <!-- Load comments components here -->
+                        
                             <app-comment [comment]="c"></app-comment>
                         </div>
                     </div>
@@ -32,3 +30,5 @@
         </div>
     </div>
 </div>
+
+

@@ -12,6 +12,8 @@ import { CommentComponent } from './comment/comment.component';
 import { CommentsComponent } from './comments/comments.component';
 import { AddEditPostComponent } from './add-edit-post/add-edit-post.component';
 import { FormsModule } from '@angular/forms';
+import { PostComponent } from './post/post.component';
+import { AddEditUserComponent } from './add-edit-user/add-edit-user.component';
 
 
 
@@ -27,6 +29,8 @@ import { FormsModule } from '@angular/forms';
     CommentComponent,
     CommentsComponent,
     AddEditPostComponent,
+    PostComponent,
+    AddEditUserComponent,
   ],
   imports: [
     CommonModule,

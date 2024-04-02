@@ -44,7 +44,7 @@ export class PostsComponent implements OnInit {
   public getUser() {
     this.userService.getUser(this.userId).subscribe((res: User[]) => {
       this.user = res[0];
-    })
+    }) 
   }
 
   public getPosts() {
