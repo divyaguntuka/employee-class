@@ -13,10 +13,21 @@
     </p> -->
 
     <app-address [address]="user.address"></app-address>
-
     <a [href]="user.website" target="_blank"><span style="color:#000;">Website:</span> {{user.website}}</a><br>
-    <button *ngIf="showPostsBtn" type="button" class="btn btn-primary mt-2 w-20 m-auto d-flex"
-        (click)="viewPosts(user.id)">View
-        Posts
+
+    <div class="d-items-b mt-4">
+        <button type="button" class="btn btn-primary" (click)="edit(user)">
+            Edit User
+        </button>
+        <button *ngIf="showPostsBtn" type="button" class="btn btn-primary mt-2 w-20 m-auto d-flex"
+        (click)="viewPosts(user.id)">View Posts
     </button>
+      
+        <button type="button" class="btn btn-danger" (click)="delete(user)">
+            Delete User
+        </button>
+    </div>
+
+ 
+   
 </div>
